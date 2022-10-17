@@ -1,7 +1,10 @@
 package com.czhao.study
 
+val PI = 3.14
+var vx = 0
+
 /**
- * Main
+ * Main FirstKt.kt的主函数
  *
  * @param args
  */
@@ -20,6 +23,10 @@ fun main(args: Array<String>) {
 
     print("printSum2(1, 4) : ")
     printSum2(1, 4)
+
+    testVariables()
+
+    testClass()
 }
 
 /**
@@ -60,4 +67,29 @@ fun printSum(a: Int, b: Int) {
  * @param b
  */
 fun printSum2(a: Int, b: Int) = print("sum of $a and $b is ${a + b}\n")
+
+fun testVariables() {
+    // val 用于常量定义，只能赋值一次
+    val a: Int = 1
+    val b = 2
+    val c: Int
+    c = 3
+
+    println("a = $a, b = $b, c = $c")
+
+    // var 用于变量定义，可重复赋值
+    var x = 5
+    x += 1
+    println("x = $x")
+
+    vx += 1
+    println("vx = $vx; PI = $PI")
+}
+
+fun testClass() {
+    val rectangle = Rectangle(10.0, 10.0)
+    println(rectangle.perimeter)
+}
+
+
 
