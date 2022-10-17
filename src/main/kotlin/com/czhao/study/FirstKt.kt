@@ -34,6 +34,9 @@ fun main(args: Array<String>) {
     println(maxOf(1, 4))
 
     testLoop()
+
+    print("testWhen")
+    println(testWhen(Any()))
 }
 
 /**
@@ -128,5 +131,14 @@ fun testLoop() {
         index++
     }
 }
+
+fun testWhen(obj:Any) =
+    when(obj) {
+        1 -> "One"
+        "hello" -> "你好"
+        is Long -> "类型是Long"
+        !is String -> "类型不是String"
+        else -> "Unknown"
+    }
 
 
