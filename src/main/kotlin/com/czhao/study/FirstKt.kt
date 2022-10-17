@@ -27,6 +27,8 @@ fun main(args: Array<String>) {
     testVariables()
 
     testClass()
+
+    testStringTemplate()
 }
 
 /**
@@ -89,6 +91,18 @@ fun testVariables() {
 fun testClass() {
     val rectangle = Rectangle(10.0, 10.0)
     println(rectangle.perimeter)
+}
+
+fun testStringTemplate() {
+    var a = 1
+    // String模板，$x 表示某个变量的值
+    val s1 = "a is $a"
+    println(s1)
+
+    a = 2
+    // ${} 内部支持表达式，表达式可以是一条语句
+    val s2 = "${s1.replace("is", "was")}, but now is $a"
+    println(s2)
 }
 
 
