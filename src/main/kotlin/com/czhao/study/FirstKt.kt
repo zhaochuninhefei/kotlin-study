@@ -29,6 +29,11 @@ fun main(args: Array<String>) {
     testClass()
 
     testStringTemplate()
+
+    print("maxOf(1, 4) : ")
+    println(maxOf(1, 4))
+
+    testLoop()
 }
 
 /**
@@ -105,5 +110,23 @@ fun testStringTemplate() {
     println(s2)
 }
 
+fun maxOf(a:Int, b:Int) = if (a > b) a else b
+
+fun testLoop() {
+    val items = listOf("李白", "杜甫", "白居易")
+    for (item in items) {
+        println("item : $item")
+    }
+
+    for (index in items.indices) {
+        println("item at $index : ${items[index]}")
+    }
+
+    var index = 0
+    while (index < items.size) {
+        println("item at $index is ${items[index]}")
+        index++
+    }
+}
 
 
