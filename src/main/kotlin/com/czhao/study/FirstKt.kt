@@ -37,6 +37,10 @@ fun main(args: Array<String>) {
 
     print("testWhen")
     println(testWhen(Any()))
+
+    testIn(9, 10)
+    testIn(10, 10)
+    testIn(11, 10)
 }
 
 /**
@@ -141,4 +145,35 @@ fun testWhen(obj:Any) =
         else -> "Unknown"
     }
 
+fun testIn(x:Int, y:Int) {
+    if (x in 1..y) {
+        println("$x in $y.")
+    } else {
+        println("$x not in $y.")
+    }
+
+    val list = listOf("a", "b", "c")
+
+    if (x !in 0..list.lastIndex) {
+        println("$x is out of range")
+    }
+    if (list.size !in list.indices) {
+        println("list size is out of valid list indices range, too")
+    }
+
+    // 遍历 [1, 10]
+    for (i in 1..10) {
+        print("$i->")
+    }
+    println()
+    // 遍历1到10之间的数字，间隔2
+    for (i in 1..10 step 2) {
+        print("$i->")
+    }
+    println()
+    // 从9遍历到0，间隔3
+    for (i in 9 downTo 0 step 3) {
+        print("$i->")
+    }
+}
 
