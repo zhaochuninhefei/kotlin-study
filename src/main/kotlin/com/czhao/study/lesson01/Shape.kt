@@ -1,4 +1,4 @@
-package com.czhao.study
+package com.czhao.study.lesson01
 
 /**
  * Shape

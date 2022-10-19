@@ -1,4 +1,4 @@
-package com.czhao.study
+package com.czhao.study.lesson01
 
 val PI = 3.14
 var vx = 0
