@@ -41,6 +41,8 @@ fun main(args: Array<String>) {
     testIn(9, 10)
     testIn(10, 10)
     testIn(11, 10)
+
+    testCollections()
 }
 
 /**
@@ -117,7 +119,7 @@ fun testStringTemplate() {
     println(s2)
 }
 
-fun maxOf(a:Int, b:Int) = if (a > b) a else b
+fun maxOf(a: Int, b: Int) = if (a > b) a else b
 
 fun testLoop() {
     val items = listOf("李白", "杜甫", "白居易")
@@ -136,8 +138,9 @@ fun testLoop() {
     }
 }
 
-fun testWhen(obj:Any) =
-    when(obj) {
+fun testWhen(obj: Any) =
+    // when 一旦匹配到一个后就不会再做后续分支的判断
+    when (obj) {
         1 -> "One"
         "hello" -> "你好"
         is Long -> "类型是Long"
@@ -145,7 +148,10 @@ fun testWhen(obj:Any) =
         else -> "Unknown"
     }
 
-fun testIn(x:Int, y:Int) {
+fun testIn(x: Int, y: Int) {
+    // range 范围
+    // 相当于 min <= ... <= max，即 [min, max]
+
     if (x in 1..y) {
         println("$x in $y.")
     } else {
@@ -156,7 +162,10 @@ fun testIn(x:Int, y:Int) {
 
     if (x !in 0..list.lastIndex) {
         println("$x is out of range")
+    } else {
+        println("$x is in range")
     }
+
     if (list.size !in list.indices) {
         println("list size is out of valid list indices range, too")
     }
@@ -166,14 +175,76 @@ fun testIn(x:Int, y:Int) {
         print("$i->")
     }
     println()
+
     // 遍历1到10之间的数字，间隔2
     for (i in 1..10 step 2) {
         print("$i->")
     }
+
     println()
     // 从9遍历到0，间隔3
     for (i in 9 downTo 0 step 3) {
         print("$i->")
     }
+}
+
+fun testCollections() {
+    val itemLst = listOf(
+        "李白",
+        "杜甫",
+        "白居易",
+        "王维",
+        "孟浩然",
+        "王昌龄",
+        "张九龄",
+        "李贺",
+        "李商隐",
+        "杜牧",
+        "刘禹锡",
+        "陈子昂",
+        "韩愈",
+        "贾岛",
+        "贺知章"
+    )
+    // 遍历集合
+    for (item in itemLst) {
+        println(item)
+    }
+
+    val itemSet = setOf(
+        "李白",
+        "杜甫",
+        "白居易",
+        "王维",
+        "孟浩然",
+        "王昌龄",
+        "张九龄",
+        "李贺",
+        "李商隐",
+        "杜牧",
+        "刘禹锡",
+        "陈子昂",
+        "韩愈",
+        "贾岛",
+        "贺知章"
+    )
+    // 用 in 判断元素是否在集合中存在
+    when {
+        "苏东坡" in itemSet -> println("苏东坡 是唐朝诗人")
+        "李商隐" in itemSet -> println("李商隐 是唐朝诗人")
+        // 因为 李商隐 成功匹配，所以这里 王昌龄 的判断分支就不走了。
+        "王昌龄" in itemSet -> println("王昌龄 是唐朝诗人")
+    }
+    // stream操作
+    println("姓李的唐朝大诗人有:")
+    itemLst
+        // 过滤姓李的诗人
+        .filter { it.startsWith("李") }
+        // 按名字排序
+        .sortedBy { it }
+        // 转换格式
+        .map { "唐朝大诗人: $it" }
+        // 输出
+        .forEach { println(it) }
 }
 
