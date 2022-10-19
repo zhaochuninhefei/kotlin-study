@@ -47,6 +47,8 @@ fun main(args: Array<String>) {
     testNullAble(null, "10")
     testNullAble("2", "10")
     testNullAble("a", "10")
+
+    testIs()
 }
 
 /**
@@ -285,4 +287,29 @@ fun testNullAble(arg1: String?, arg2: String?) {
         println("'$arg1' or '$arg2' is not a number")
     }
 }
+
+fun testIs() {
+    fun getStringLength(obj: Any?): Int? {
+        if (obj is String) {
+            println("obj: $obj")
+            // `obj` 在该条件分支内自动转换成 `String`
+            return obj.length
+        }
+        // 在离开类型检测分支后，`obj` 仍然是 `Any` 类型
+        return null
+    }
+
+    fun printLength(obj: Any?) {
+        println("Getting the length of '$obj'. Result: ${getStringLength(obj) ?: "Error: The object is not a string"} ")
+    }
+
+    printLength("天行健君子以自强不息")
+    printLength(1000)
+    printLength(listOf(Any()))
+    val strTest:String? = null
+    println("strTest: $strTest")
+    printLength(strTest)
+}
+
+
 
