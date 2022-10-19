@@ -43,6 +43,10 @@ fun main(args: Array<String>) {
     testIn(11, 10)
 
     testCollections()
+
+    testNullAble(null, "10")
+    testNullAble("2", "10")
+    testNullAble("a", "10")
 }
 
 /**
@@ -246,5 +250,39 @@ fun testCollections() {
         .map { "唐朝大诗人: $it" }
         // 输出
         .forEach { println(it) }
+}
+
+/**
+ * parseInt 转换整数，结果有可能是null
+ *
+ * 类型后面跟一个"?"表示这个变量有可能是null。
+ *
+ * @param str 被转换的字符串
+ * @return Int?
+ */
+fun parseInt(str: String?): Int? {
+    if (str == null) {
+        return null
+    }
+    return str.toIntOrNull()
+}
+
+/**
+ * testNullAble
+ *
+ * @param arg1
+ * @param arg2
+ */
+fun testNullAble(arg1: String?, arg2: String?) {
+    val x = parseInt(arg1)
+    val y = parseInt(arg2)
+
+    // 直接使用 `x * y` 会导致编译错误，因为它们可能为 null
+    if (x != null && y != null) {
+        // 在空检测后，x 与 y 会自动转换为非空值（non-nullable）
+        println(x * y)
+    } else {
+        println("'$arg1' or '$arg2' is not a number")
+    }
 }
 
