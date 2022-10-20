@@ -4,6 +4,7 @@ fun main() {
     testCustomer()
     testDefaultParam()
     testMap()
+    testRange()
 }
 
 fun testCustomer() {
@@ -48,4 +49,38 @@ fun testMap() {
     map2["李白"] = 100
     v2 = map2["李白"]
     println("李白: $v2")
+}
+
+fun testRange() {
+    println()
+    println("--- testRange ---")
+
+    println("闭区间: [1, 10]")
+    for (i in 1..10) {
+        print("$i >")
+    }
+    println()
+
+    println("半开区间: [1, 10)")
+    for (i in 1 until 10) {
+        print("$i >")
+    }
+    println()
+
+    println("闭区间: [1, 10], 步长: 2")
+    for (i in 2..10 step 2) {
+        print("$i >")
+    }
+    println()
+
+    println("闭区间: [10, 1]")
+    for (i in 10 downTo 1) {
+        print("$i >")
+    }
+    println()
+
+    println("闭区间: [-5, 5]")
+    (-5..5).forEach{
+        print("$it >")
+    }
 }
