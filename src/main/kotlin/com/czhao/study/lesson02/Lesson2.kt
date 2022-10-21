@@ -14,6 +14,9 @@ fun main() {
     testFunExtend()
     testAbstract()
     testIfNullNotNull()
+    testWhen()
+    testTry()
+    testIf(2)
 }
 
 fun testCustomer() {
@@ -171,4 +174,44 @@ fun testIfNullNotNull() {
 
     val mapped = filesNothing?.let { it.size + 100 } ?: 100
     println("mapped is $mapped")
+}
+
+fun transform(color: String): Int {
+    return when (color) {
+        "Red" -> 0
+        "Green" -> 1
+        "Blue" -> 2
+        else -> throw IllegalArgumentException("Invalid color param value")
+    }
+}
+
+fun testWhen() {
+    println()
+    println("--- testIfNullNotNull ---")
+    val transformColor = transform("Blue")
+    println("color show: $transformColor")
+}
+
+fun testTry() {
+    println()
+    println("--- testTry ---")
+    val secondsOneDay = try {
+        24 * 60 * 60
+    } catch (e: ArithmeticException) {
+        throw IllegalStateException(e)
+    }
+    println("一天有 $secondsOneDay 秒")
+}
+
+fun testIf(x: Int) {
+    println()
+    println("--- testTry ---")
+    val y = if (x == 1) {
+        "one"
+    } else if (x == 2) {
+        "two"
+    } else {
+        "other"
+    }
+    println("y is $y")
 }

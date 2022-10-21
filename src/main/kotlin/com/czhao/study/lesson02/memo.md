@@ -14,4 +14,7 @@ lesson02学习的是kotlin的习惯用法，包括以下知识点：
 - 扩展函数
 - 创建单例
 - null判断
+- 返回 when 表达式
+- try-catch 表达式
+- if 表达式
 
