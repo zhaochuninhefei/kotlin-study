@@ -7,6 +7,7 @@ fun main() {
     testMap()
     testRange()
     testLazy()
+    testSingleton()
 }
 
 fun testCustomer() {
@@ -95,4 +96,11 @@ fun testLazy() {
     println()
     println("--- testLazy ---")
     println(p)
+}
+
+fun testSingleton() {
+    println()
+    println("--- testSingleton ---")
+    val singleton = SingletonTest
+    println("singleton: $singleton, name: ${singleton.name}")
 }
