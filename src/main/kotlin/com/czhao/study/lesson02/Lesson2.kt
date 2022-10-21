@@ -1,5 +1,8 @@
 package com.czhao.study.lesson02
 
+import java.io.File
+import java.lang.IllegalStateException
+
 
 fun main() {
     testCustomer()
@@ -10,6 +13,7 @@ fun main() {
     testSingleton()
     testFunExtend()
     testAbstract()
+    testIfNullNotNull()
 }
 
 fun testCustomer() {
@@ -33,7 +37,7 @@ fun testDefaultParam() {
     foo(10, "bbb")
 }
 
-fun foo(a: Int = 1, b:String = "") {
+fun foo(a: Int = 1, b: String = "") {
     println("a is $a")
     println("b is $b")
 }
@@ -85,22 +89,23 @@ fun testRange() {
     println()
 
     println("闭区间: [-5, 5]")
-    (-5..5).forEach{
+    (-5..5).forEach {
         print("$it >")
     }
     println()
 }
 
-val p:String by lazy {
+val p: String by lazy {
     "test" + 100
 }
+
 fun testLazy() {
     println()
     println("--- testLazy ---")
     println(p)
 }
 
-fun String.myToString():String {
+fun String.myToString(): String {
     return "扩展函数 String.myToString : ${toString()}"
 }
 
@@ -133,4 +138,37 @@ fun testAbstract() {
     who.handleHello()
     who.resetName("zhangsan")
     who.sleep()
+}
+
+fun testIfNullNotNull() {
+    println()
+    println("--- testIfNullNotNull ---")
+
+    val files = File("./").listFiles()
+    val filesNothing = File("./emptydir").listFiles()
+
+    // if-not-null 缩写
+    println("files in curdir : ${files?.size}")
+
+    // if-not-null-else 缩写
+    println("files in ./emptydir : ${filesNothing?.size ?: "empty"}")
+    val filesSize = files?.size ?: run {
+        0
+    }
+    println("filesSize in ./emptydir : $filesSize")
+
+    // if null 执行一个语句
+    files ?: throw IllegalStateException("files is null!")
+    filesNothing ?: println("filesNothing is null!")
+
+    // 在可能会空的集合中取第一元素
+    println("第一个文件全路径: ${filesNothing?.firstOrNull()?.absoluteFile?.absolutePath}")
+
+    // if not null 执行代码
+    filesNothing?.let {
+        println("filesNothing is not null!")
+    }
+
+    val mapped = filesNothing?.let { it.size + 100 } ?: 100
+    println("mapped is $mapped")
 }
