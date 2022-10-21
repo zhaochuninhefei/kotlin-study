@@ -9,6 +9,7 @@ fun main() {
     testLazy()
     testSingleton()
     testFunExtend()
+    testAbstract()
 }
 
 fun testCustomer() {
@@ -115,4 +116,21 @@ fun testSingleton() {
     println("--- testSingleton ---")
     val singleton = SingletonTest
     println("singleton: $singleton, name: ${singleton.name}")
+}
+
+fun testAbstract() {
+    println()
+    println("--- testAbstract ---")
+    val who = object : AbstractTest() {
+        override fun handleHello() {
+            println("Hello, $name")
+        }
+
+        override fun sleep() {
+            println("$name is sleeping...")
+        }
+    }
+    who.handleHello()
+    who.resetName("zhangsan")
+    who.sleep()
 }
