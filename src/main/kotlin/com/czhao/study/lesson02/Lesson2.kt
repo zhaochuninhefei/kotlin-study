@@ -1,10 +1,12 @@
 package com.czhao.study.lesson02
 
+
 fun main() {
     testCustomer()
     testDefaultParam()
     testMap()
     testRange()
+    testLazy()
 }
 
 fun testCustomer() {
@@ -83,4 +85,14 @@ fun testRange() {
     (-5..5).forEach{
         print("$it >")
     }
+    println()
+}
+
+val p:String by lazy {
+    "test" + 100
+}
+fun testLazy() {
+    println()
+    println("--- testLazy ---")
+    println(p)
 }
