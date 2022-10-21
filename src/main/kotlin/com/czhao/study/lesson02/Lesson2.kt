@@ -17,6 +17,7 @@ fun main() {
     testWhen()
     testTry()
     testIf(2)
+    testApply()
 }
 
 fun testCustomer() {
@@ -214,4 +215,15 @@ fun testIf(x: Int) {
         "other"
     }
     println("y is $y")
+}
+
+fun arrayOfMinusOnes(size: Int): IntArray {
+    return IntArray(size).apply { fill(-1) }
+}
+
+fun testApply() {
+    println()
+    println("--- testApply ---")
+    val arr = arrayOfMinusOnes(3)
+    arr.forEach { print("$it , ") }
 }
