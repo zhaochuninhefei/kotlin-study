@@ -8,6 +8,7 @@ fun main() {
     testRange()
     testLazy()
     testSingleton()
+    testFunExtend()
 }
 
 fun testCustomer() {
@@ -96,6 +97,17 @@ fun testLazy() {
     println()
     println("--- testLazy ---")
     println(p)
+}
+
+fun String.myToString():String {
+    return "扩展函数 String.myToString : ${toString()}"
+}
+
+fun testFunExtend() {
+    println()
+    println("--- testFunExtend ---")
+    val line = "死去元知万事空"
+    println(line.myToString())
 }
 
 fun testSingleton() {
