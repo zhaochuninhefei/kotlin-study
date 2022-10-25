@@ -5,6 +5,7 @@ import java.lang.IllegalStateException
 
 
 fun main() {
+    println("--- 开始 lesson2 测试 ---")
     testCustomer()
     testDefaultParam()
     testMap()
