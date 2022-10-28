@@ -4,6 +4,10 @@ import java.io.File
 import java.lang.IllegalStateException
 
 
+/**
+ * Main Lesson2主程序
+ *
+ */
 fun main() {
     println("--- 开始 lesson2 测试 ---")
     testCustomer()
